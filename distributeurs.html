@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1d4fb8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Readex+Pro:wght@400;500;700&family=Lilita+One&family=Lalezar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo-magico.png">
+<title>Espace distributeurs — Magico</title>
+<meta name="description" content="Devenez distributeur Magico : grossistes, supérettes, salles de sport. Simulateur de commande et points de vente.">
+</head><body data-v="auto">
+<div id="hdr"></div>
+<main id="main">
+<section class="d-hero"><canvas id="cv"></canvas><div class="wrap in">
+ <div><nav class="crumb" aria-label="Fil d'Ariane"><a id="hm" href="index.html">Accueil</a><span>/</span><span>Distributeurs</span></nav>
+  <h1>Mettez Magico<br>dans vos rayons.</h1>
+  <p class="lead">Grossistes, supérettes, pharmacies, salles de sport : préparez votre commande ci-dessous, notre service commercial vous rappelle avec les conditions.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px"><a class="btn y" href="#commande">Préparer ma commande</a><a class="btn o" href="#trouver">Trouver un point de vente</a></div></div>
+ <div class="pile"><img src="img/extra-sac.webp" alt=""><img src="img/classique-box.webp" alt=""><img src="img/dark-sac.webp" alt=""></div>
+</div></section>
+<section><div class="wrap">
+ <div class="perks">
+  <div class="perk rv"><div class="e">📦</div><h3>Deux formats</h3><p>Boîtes de 400 g pour le rayon petit-déjeuner, sachets zippés de 1 kg pour les sportifs et les familles.</p></div>
+  <div class="perk rv"><div class="e">📣</div><h3>Une marque visible</h3><p>71 K abonnés sur Facebook et des campagnes régulières qui envoient les clients en magasin.</p></div>
+  <div class="perk rv"><div class="e">🏋️</div><h3>Le public sport</h3><p>Muesli et peanut butter se vendent aussi en salle de sport et en boutique de nutrition.</p></div>
+  <div class="perk rv"><div class="e">🇩🇿</div><h3>Fabriqué à Blida</h3><p>Une production locale, avec un service commercial joignable directement.</p></div>
+ </div>
+</div></section>
+<section id="commande" style="padding-top:0"><div class="wrap">
+ <div class="shead"><h2>Préparez votre commande</h2><p>Indiquez le nombre de cartons par produit et par format. Les tarifs vous sont envoyés par le service commercial.</p></div>
+ <div class="sim">
+  <div id="rows"></div>
+  <div class="recap"><h3>Votre sélection</h3><ul id="rc"></ul><div class="tot" id="tot"></div>
+   <form class="f" id="form">
+    <label>Nom / Société<input required autocomplete="organization"></label>
+    <label>Téléphone<input type="tel" required autocomplete="tel"></label>
+    <label>Wilaya<select id="w2" required></select></label>
+    <label>Type de point de vente<select><option>Grossiste</option><option>Supérette / alimentation</option><option>Salle de sport / nutrition</option><option>Pharmacie / parapharmacie</option><option>Autre</option></select></label>
+    <button class="btn y" type="submit">Envoyer ma demande</button>
+   </form></div>
+ </div>
+</div></section>
+<section id="trouver" style="padding-top:0"><div class="wrap">
+ <div class="panel"><h2>Trouver Magico près de chez vous</h2><p style="color:var(--mut);margin-bottom:16px">Choisissez votre wilaya : le service commercial vous indique le point de vente le plus proche.</p>
+  <div class="wil"><select id="w1" aria-label="Wilaya"><option value="">Choisir une wilaya</option></select><a class="btn" href="" id="wcall">Appeler le service commercial</a></div>
+  <p class="wres" id="wres" aria-live="polite"></p></div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+document.getElementById('hm').href=HOME;
+if(V==='fun')Grains(document.getElementById('cv'),{n:30});
+const W='Adrar,Chlef,Laghouat,Oum El Bouaghi,Batna,Béjaïa,Biskra,Béchar,Blida,Bouira,Tamanrasset,Tébessa,Tlemcen,Tiaret,Tizi Ouzou,Alger,Djelfa,Jijel,Sétif,Saïda,Skikda,Sidi Bel Abbès,Annaba,Guelma,Constantine,Médéa,Mostaganem,M\'Sila,Mascara,Ouargla,Oran,El Bayadh,Illizi,Bordj Bou Arréridj,Boumerdès,El Tarf,Tindouf,Tissemsilt,El Oued,Khenchela,Souk Ahras,Tipaza,Mila,Aïn Defla,Naâma,Aïn Témouchent,Ghardaïa,Relizane,Timimoun,Bordj Badji Mokhtar,Ouled Djellal,Béni Abbès,In Salah,In Guezzam,Touggourt,Djanet,El M\'Ghair,El Meniaa'.split(',');
+const opts=W.map((w,i)=>'<option>'+String(i+1).padStart(2,'0')+' · '+w+'</option>').join('');
+document.getElementById('w1').insertAdjacentHTML('beforeend',opts);document.getElementById('w2').innerHTML='<option value="">Choisir</option>'+opts;
+const wc=document.getElementById('wcall');wc.href=CONTACT.comTel;
+document.getElementById('w1').onchange=e=>{const v=e.target.value;document.getElementById('wres').textContent=v?'Wilaya '+v.split(' · ')[1]+' : appelez le '+CONTACT.com+', on vous oriente vers le point de vente Magico le plus proche.':''};
+const Q={};ORDER.forEach(k=>Q[k]={n:0,f:P[k].fmt[0]});
+document.getElementById('rows').innerHTML=ORDER.map(k=>{const p=P[k];return '<div class="srow" data-k="'+k+'">'+pimg(k)+'<div><b>'+p.full+'</b><small>'+(p.line==='pot'?'Pot':'Muesli d\'avoine')+'</small></div><select aria-label="Format">'+p.fmt.map(f=>'<option>'+f+'</option>').join('')+'</select><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un carton">−</button><output>0</output><button type="button" data-d="1" aria-label="Ajouter un carton">+</button></div></div>'}).join('');
+function recap(){const s=ORDER.filter(k=>Q[k].n>0),t=s.reduce((a,k)=>a+Q[k].n,0);
+ document.getElementById('rc').innerHTML=s.length?s.map(k=>'<li><span>'+P[k].name+' · '+Q[k].f+'</span><b>'+Q[k].n+'</b></li>').join(''):'<li style="border:0;opacity:.7">Ajoutez des cartons avec le bouton +.</li>';
+ document.getElementById('tot').textContent=t+(t>1?' cartons':' carton')}
+document.getElementById('rows').addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b)return;const r=b.closest('.srow'),k=r.dataset.k;Q[k].n=Math.max(0,Q[k].n+ +b.dataset.d);r.querySelector('output').textContent=Q[k].n;recap()});
+document.getElementById('rows').addEventListener('change',e=>{const r=e.target.closest('.srow');if(r){Q[r.dataset.k].f=e.target.value;recap()}});
+document.getElementById('form').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée !')};
+recap();reveal();
+</script>
+</body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1d4fb8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Readex+Pro:wght@400;500;700&family=Lilita+One&family=Lalezar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo-magico.png">
+<title>Magico — Muesli d'avoine fabriqué à Blida</title>
+<meta name="description" content="Magico : muesli d'avoine au miel de dattes (Classique, Extra, Crunchy, Gourmand, Premium, Dark, Super) et peanut butter. Fabriqué en Algérie, à Blida.">
+</head><body data-v="corp">
+<div id="hdr"></div>
+<main id="main">
+<section class="c-hero"><div class="wrap in">
+ <div>
+  <span class="kick"><b>Blida</b>Fabriqué en Algérie</span>
+  <h1><span class="ln">Le muesli d'avoine</span><span class="ln">au miel de dattes.</span></h1>
+  <p class="lead">Huit recettes en boîte de 400 g, en sachet de 1 kg et en pot de peanut butter. Fruits à coque, chocolat ou épices : un petit-déjeuner pour chaque objectif.</p>
+  <div class="acts"><a class="btn y" href="#gamme">Découvrir la gamme</a><a class="btn o" href="distributeurs.html">Espace distributeurs</a></div>
+ </div>
+ <div class="fan" id="fan"><span class="disc"></span><span class="tap tr"><i></i>Cliquez sur une boîte</span></div>
+</div></section>
+<div class="stats"><div class="wrap in">
+ <div class="stat"><b>8</b><span>recettes Magico</span></div>
+ <div class="stat"><b>400 g · 1 kg</b><span>boîtes et sachets zippés</span></div>
+ <div class="stat"><b>71 K</b><span>abonnés sur Facebook</span></div>
+ <div class="stat"><b>Blida</b><span>lieu de fabrication</span></div>
+</div></div>
+
+<section id="gamme"><div class="wrap">
+ <div class="shead"><h2>La gamme Magico</h2><p>Chaque recette a sa fiche : ingrédients, formats et conseils. Cliquez sur un produit pour l'ouvrir.</p></div>
+ <div class="filters" id="filters" role="group" aria-label="Filtrer la gamme"></div>
+ <div class="cgrid" id="cgrid"></div>
+</div></section>
+
+<section class="why"><div class="wrap whyg">
+ <div class="rv">
+  <h2>Ce qu'on met<br>dans le bol.</h2>
+  <div class="wl">
+   <div class="wi"><div class="e">🌾</div><h3>Flocons d'avoine</h3><p>La base de toutes les recettes de muesli Magico.</p></div>
+   <div class="wi"><div class="e">🍯</div><h3>Miel de dattes</h3><p>Il lie les flocons et apporte la douceur, à la place du sucre ajouté.</p></div>
+   <div class="wi"><div class="e">🥜</div><h3>Fruits à coque</h3><p>Noix, amandes, noisettes, cacahuètes et noix de cajou selon la recette.</p></div>
+   <div class="wi"><div class="e">💪</div><h3>Fibres et protéines</h3><p>Les packs indiquent « riche en fibres, protéines, magnésium et phosphore ».</p></div>
+  </div>
+  <p class="note">Mentions reprises des emballages. Gourmand est « sucre réduit » ; les autres recettes de muesli sont « sans sucre ajouté ».</p>
+ </div>
+ <div class="whyimg rv"><img src="img/camp-premium.jpg" alt="Sportif prenant un bol de muesli Magico Premium" loading="lazy"></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="shead"><h2>Vu sur nos réseaux</h2><p>Les dernières campagnes Magico sur Facebook et Instagram.</p></div>
+ <div class="gal" id="gal"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap duo">
+ <a class="blk a rv" href="distributeurs.html"><img class="pk" src="img/super-sac.webp" alt=""><span class="tap tl"><i></i>Espace pro</span><h3>Distribuez Magico</h3><p>Grossistes, supérettes, salles de sport : préparez votre commande et recevez nos conditions.</p><span class="go">Ouvrir l'espace distributeurs →</span></a>
+ <a class="blk b rv" href="jeux.html"><span class="big" aria-hidden="true">🎁</span><span class="tap tl" style="background:#fff;color:#c3164f"><i style="background:#c3164f"></i>À gagner</span><h3>Quiz & roue de la fortune</h3><p>Répondez au quiz, tournez la roue et tentez de gagner un cartable, une boîte de muesli ou un pot de peanut butter.</p><span class="go">Jouer maintenant →</span></a>
+</div></section>
+<section class="contact" id="contact"><div class="wrap cg">
+ <div><h2>Une question ?<br>On vous répond.</h2><p style="margin-top:14px;opacity:.85;font-size:18px;max-width:440px">Produits, points de vente ou partenariat : écrivez-nous ou appelez directement le bon service.</p>
+  <div class="cinfo" id="cinfo"></div></div>
+ <form class="f" id="cform">
+  <label>Nom<input required autocomplete="name"></label><label>Téléphone<input type="tel" required autocomplete="tel"></label>
+  <label class="full">Objet<select><option>Question sur un produit</option><option>Où acheter Magico ?</option><option>Devenir distributeur</option><option>Partenariat / sponsoring sportif</option></select></label>
+  <label class="full">Message<textarea></textarea></label>
+  <button class="btn" type="submit">Envoyer le message</button>
+ </form></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+document.getElementById('fan').insertAdjacentHTML('beforeend',['extra','crunchy','classique','gourmand','premium'].map(k=>'<a href="produit.html?p='+k+'" aria-label="'+P[k].full+'"><img src="'+P[k].img+'" alt=""></a>').join(''));
+let line='all';const fl=document.getElementById('filters');
+fl.innerHTML=LINES.map(l=>'<button type="button" data-l="'+l[0]+'" class="'+(l[0]==='all'?'on':'')+'" aria-pressed="'+(l[0]==='all')+'">'+l[1]+'</button>').join('');
+const inLine=(k,l)=>l==='all'||P[k].line===l||(l==='sac'&&P[k].fmt.includes('1 kg'));
+document.getElementById('cgrid').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '<a class="pc" data-k="'+k+'" href="produit.html?p='+k+'" style="--c1:'+p.c1+'">'+(i===0?'<span class="tap tr"><i></i>Fiche produit</span>':'')+'<div class="vis">'+pimg(k)+'</div><div class="tx"><div class="fm">'+p.fmt.map(f=>'<span>'+f+'</span>').join('')+'</div><h3>'+p.name+'</h3><p>'+p.ing+'</p><span class="go">Voir la fiche →</span></div></a>'}).join('');
+fl.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;line=b.dataset.l;fl.querySelectorAll('button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pc').forEach(c=>c.classList.toggle('hide',!inLine(c.dataset.k,line)))});
+const G=[['classique','camp-classique','La simplicité gagne'],['dark','camp-dark','Le goût le plus fort'],['extra','camp-extra','Plus qu\'un petit-déjeuner'],['crunchy','camp-combo','The perfect combo'],['peanut','camp-peanut','Peanut butter 500 g'],['super','camp-super','La régularité paie'],['premium','camp-premium','Une nutrition pour ton objectif'],['crunchy','camp-crunchy','Muesli Crunchy 1 kg'],['extra','camp-extra-box','Extra, 100 % naturel'],['classique','camp-classique2','Un petit-déj équilibré']];
+document.getElementById('gal').innerHTML=G.map(g=>'<a href="produit.html?p='+g[0]+'"><img src="img/'+g[1]+'.jpg" alt="Campagne Magico : '+g[2]+'" loading="lazy"><span class="cap">'+g[2]+'</span></a>').join('');
+document.getElementById('cinfo').innerHTML='<a href="'+CONTACT.consoTel+'">'+IC.phone+'<span>'+CONTACT.conso+'<small>Service consommateur</small></span></a><a href="'+CONTACT.comTel+'">'+IC.phone+'<span>'+CONTACT.com+'<small>Service commercial</small></span></a><a href="'+CONTACT.map+'" target="_blank" rel="noopener">'+IC.pin+'<span>'+CONTACT.addr+'<small>Adresse</small></span></a><a href="'+CONTACT.ig+'" target="_blank" rel="noopener">'+IC.ig+'<span>@magico.dz<small>Instagram</small></span></a>';document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Message envoyé, merci !')};
+reveal();
+</script>
+</body></html>

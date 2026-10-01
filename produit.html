@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1d4fb8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Readex+Pro:wght@400;500;700&family=Lilita+One&family=Lalezar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo-magico.png">
+<title>Fiche produit — Magico</title>
+<meta name="description" content="Fiche produit Magico : ingrédients, formats, mentions et conseils d'utilisation.">
+</head><body data-v="auto">
+<div id="hdr"></div>
+<main id="main">
+<section class="p-hero" id="ph"><canvas id="cv"></canvas><div class="wrap in">
+ <div>
+  <nav class="crumb" aria-label="Fil d'Ariane"><a id="hm" href="index.html">Accueil</a><span>/</span><a id="hg" href="index.html#gamme">La gamme</a><span>/</span><span id="cb"></span></nav>
+  <h1 id="pn"></h1><div class="ar" id="pa"></div>
+  <p class="lead" id="pl"></p>
+  <div class="chips" id="pc"></div>
+  <div class="fmtsw" id="fs" role="group" aria-label="Format"></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn y" href="distributeurs.html">Commander en gros</a><a class="btn o" href="jeux.html">🎁 Gagner une boîte</a></div>
+ </div>
+ <div class="pstage"><span class="ring"></span><img id="pi" alt=""></div>
+</div></section>
+<section style="padding-top:clamp(40px,5vw,70px)"><div class="wrap pgrid">
+ <div>
+  <div class="panel rv"><h2>La recette</h2><p id="pd" style="font-size:17px"></p><div class="spec" id="sp"></div></div>
+  <div class="panel rv"><h2>Sur le pack</h2><ul class="cl" id="cl"></ul><p class="note">Mentions reprises de l'emballage. Pour la liste complète et les valeurs nutritionnelles, se référer au pack.</p></div>
+  <div class="panel rv"><h2>Comment le déguster</h2><ol class="steps" id="st"></ol></div>
+ </div>
+ <div class="panel rv"><h2>En campagne</h2><div class="campimg"><img id="cp" alt="" loading="lazy"></div><a class="btn" style="margin-top:16px;width:100%" href="distributeurs.html#trouver">📍 Où l'acheter ?</a></div>
+</div></section>
+<section style="padding-top:0"><div class="wrap"><div class="shead"><h2>Les autres recettes</h2></div><div class="rel" id="rel"></div></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+const q=new URLSearchParams(location.search).get('p'),k=P[q]?q:'classique',p=P[k];
+document.title=p.full+' — Magico';
+document.getElementById('hm').href=HOME;document.getElementById('hg').href=HOME+'#gamme';
+const ph=document.getElementById('ph');ph.style.setProperty('--c1',p.c1);ph.style.setProperty('--c2',p.c2);ph.style.setProperty('--k',p.ink);
+if(V==='fun')Grains(document.getElementById('cv'),{n:30});
+document.getElementById('cb').textContent=p.name;document.getElementById('pn').textContent=p.full;document.getElementById('pa').textContent=p.slogan;
+document.getElementById('pl').textContent=p.desc;
+document.getElementById('pc').innerHTML=p.claims.slice(0,3).map(c=>'<span>'+c+'</span>').join('');
+const pi=document.getElementById('pi');pi.src=p.img;pi.alt=p.full;if(p.photo)pi.className='ph';
+const fs=document.getElementById('fs');
+if(p.img2){fs.innerHTML=p.fmt.map((f,i)=>'<button type="button" class="'+(i?'':'on')+'" data-i="'+i+'">'+(i?'Sachet ':'Boîte ')+f+'</button>').join('');
+ fs.onclick=e=>{const b=e.target.closest('button');if(!b)return;fs.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));pi.style.opacity=0;setTimeout(()=>{pi.src=+b.dataset.i?p.img2:p.img;pi.style.opacity=1},200)}}
+else fs.innerHTML='<button type="button" class="on">'+(p.line==='sac'?'Sachet zippé ':p.line==='pot'?'Pot ':'Boîte ')+p.fmt.join(' / ')+'</button>';
+document.getElementById('pd').textContent=p.desc;
+document.getElementById('sp').innerHTML='<div><small>Ingrédients principaux</small><b style="font-size:15px">'+p.ing+'</b></div><div><small>Format'+(p.fmt.length>1?'s':'')+'</small><b>'+p.fmt.join(' · ')+'</b></div><div><small>Gamme</small><b>'+(p.line==='box'?'Boîte':p.line==='sac'?'Sachet zippé':'Tartinable')+'</b></div><div><small>Fabrication</small><b>Blida, Algérie</b></div>';
+document.getElementById('cl').innerHTML=p.claims.map(c=>'<li>'+IC.check+'<span>'+c+'</span></li>').join('');
+document.getElementById('st').innerHTML=(k==='peanut'?['Tartinez sur du pain ou une galette.','Ajoutez une cuillère dans votre muesli, un yaourt ou un smoothie.','Refermez bien le pot et conservez-le dans un endroit sec, à l\'abri de la chaleur.']:['Versez une portion de muesli dans un bol.','Ajoutez du lait, un yaourt ou un jus selon vos envies.','Complétez avec des fruits frais ou une cuillère de peanut butter Magico.','Refermez bien le pack et conservez-le dans un endroit sec, à l\'abri de la chaleur et de l\'humidité.']).map(s=>'<li><span>'+s+'</span></li>').join('');
+const cp=document.getElementById('cp');cp.src=p.camp;cp.alt='Campagne '+p.full;
+document.getElementById('rel').innerHTML=ORDER.filter(x=>x!==k).slice(0,4).map(x=>{const q=P[x];return V==='fun'?'<a class="st" href="produit.html?p='+x+'" style="--c1:'+q.c1+';min-height:340px"><span class="ar">'+q.ar+'</span><div class="im">'+pimg(x)+'</div><div class="lb"><h3>'+q.name+'</h3><p>'+q.fmt.join(' · ')+'</p></div></a>':'<a class="pc" href="produit.html?p='+x+'" style="--c1:'+q.c1+'"><div class="vis">'+pimg(x)+'</div><div class="tx"><h3>'+q.name+'</h3><span class="go">Voir la fiche →</span></div></a>'}).join('');
+document.addEventListener('pointermove',e=>{if(innerWidth<900)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;pi.style.transform='rotateY('+(x*10)+'deg) rotateX('+(-y*6)+'deg) translateY('+(y*-10)+'px)'});
+reveal();
+</script>
+</body></html>

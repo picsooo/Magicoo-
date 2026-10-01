@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1d4fb8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Readex+Pro:wght@400;500;700&family=Lilita+One&family=Lalezar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo-magico.png">
+<title>Magico — Choisis ton muesli</title>
+<meta name="description" content="Magico en version fun : choisis ta recette de muesli d'avoine, trouve ton mood et tente ta chance à la roue de la fortune.">
+</head><body data-v="fun">
+<div id="hdr"></div>
+<main id="main">
+<section class="f-hero" id="fh"><div class="giant" aria-hidden="true"><div id="giant"></div></div><canvas id="cv"></canvas>
+ <div class="wrap in">
+  <div>
+   <div class="ar" id="har"></div>
+   <h1 id="hname"></h1>
+   <p class="lead" id="hlead"></p>
+   <div class="acts"><a class="btn" id="hgo" href="#">Voir la fiche</a><a class="btn o" href="jeux.html">🎁 Jouer et gagner</a></div>
+   <div class="dots" id="dots" role="group" aria-label="Choisir une recette"></div>
+   <span class="hint">👆 Touchez l'écran pour faire voler les ingrédients</span>
+  </div>
+  <div class="flow" id="flow"><span class="tap tr"><i></i>Glissez ou cliquez</span><button class="arr p" type="button" aria-label="Recette précédente">←</button><button class="arr n" type="button" aria-label="Recette suivante">→</button></div>
+ </div>
+ <div class="wave2"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 30 C200 0 400 60 720 30 S1240 0 1440 30 V60 H0Z"/></svg></div>
+</section>
+<div class="tape" aria-hidden="true"><div id="tape"></div></div>
+
+<section><div class="wrap">
+ <div class="shead"><h2>C'est quoi ton mood<br>ce matin ?</h2><p>Choisis, on te dit quel Magico verser dans ton bol.</p></div>
+ <div class="moods" id="moods"></div>
+ <div class="mres" id="mres" aria-live="polite"></div>
+</div></section>
+
+<section id="gamme" style="padding-top:0"><div class="wrap">
+ <div class="shead"><h2>Toute la bande</h2><p>Huit recettes, huit couleurs. Clique sur un pack pour sa fiche.</p></div>
+ <div class="filters" id="filters" role="group" aria-label="Filtrer"></div>
+ <div class="stk" id="stk"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="shead"><h2>Vu sur Insta</h2><p>Fais défiler nos dernières campagnes.</p></div></div>
+ <div class="pola" id="pola"></div>
+</section>
+
+<section style="padding-top:0"><div class="gameteaser"><canvas id="cv2" style="position:absolute;inset:0;width:100%;height:100%;z-index:1"></canvas><div class="wrap in" style="padding-block:clamp(40px,6vw,70px)">
+ <div><h2>Tourne la roue,<br>gagne ton cartable.</h2><p>Un quiz de 6 questions sur Magico, puis un tour de roue. À gagner :</p>
+  <div class="prz" id="prz"></div><div style="margin-top:24px"><a class="btn o" href="jeux.html">🎡 Je tente ma chance</a></div></div>
+ <div class="miniwheel" id="mw" aria-hidden="true"></div>
+</div></div></section>
+
+<section style="padding-bottom:0"><div class="wrap duo">
+ <a class="blk a rv" href="distributeurs.html" style="border:3px solid var(--navy);box-shadow:6px 6px 0 #ff3d7f"><img class="pk" src="img/dark-sac.webp" alt=""><span class="tap tl"><i></i>Espace pro</span><h3>Tu tiens une supérette ou une salle ?</h3><p>Deviens distributeur Magico : simulateur de commande et conditions pro.</p><span class="go">Espace distributeurs →</span></a>
+ <a class="blk rv" href="produit.html?p=peanut" style="background:#e9b26b;color:var(--navy);border:3px solid var(--navy);box-shadow:6px 6px 0 var(--navy)"><img class="pk" src="img/peanut.jpg" alt="" style="border-radius:16px;border:3px solid var(--navy);height:50%"><h3>Une cuillère de peanut butter ?</h3><p>0 % huile de palme, 0 % sucre ajouté. Le duo parfait avec ton muesli.</p><span class="go">Voir le pot 500 g →</span></a>
+</div></section>
+<div style="height:clamp(60px,8vw,110px)"></div>
+<section class="contact" id="contact"><div class="wrap cg">
+ <div><h2>Une question ?<br>On vous répond.</h2><p style="margin-top:14px;opacity:.85;font-size:18px;max-width:440px">Produits, points de vente ou partenariat : écrivez-nous ou appelez directement le bon service.</p>
+  <div class="cinfo" id="cinfo"></div></div>
+ <form class="f" id="cform">
+  <label>Nom<input required autocomplete="name"></label><label>Téléphone<input type="tel" required autocomplete="tel"></label>
+  <label class="full">Objet<select><option>Question sur un produit</option><option>Où acheter Magico ?</option><option>Devenir distributeur</option><option>Partenariat / sponsoring sportif</option></select></label>
+  <label class="full">Message<textarea></textarea></label>
+  <button class="btn" type="submit">Envoyer le message</button>
+ </form></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="core.js"></script>
+<script>
+const cv=Grains(document.getElementById('cv'));Grains(document.getElementById('cv2'),{n:24});
+const fh=document.getElementById('fh'),flow=document.getElementById('flow');
+let cur=0;
+document.getElementById('giant').innerHTML=(ORDER.map(k=>P[k].name).join(' · ')+' · ').repeat(2);
+document.getElementById('tape').innerHTML=('<span>Classique</span><span>Extra</span><span>Crunchy</span><span>Gourmand</span><span>Premium</span><span>Dark</span><span>Super</span><span>Peanut Butter</span><span>Sans sucre ajouté</span><span>Miel de dattes</span><span>Made in Blida</span>').repeat(3);
+flow.insertAdjacentHTML('beforeend',ORDER.map((k,i)=>'<div class="it'+(P[k].photo?' ph':'')+'" data-i="'+i+'" role="button" tabindex="0" aria-label="'+P[k].full+'"><img src="'+P[k].img+'" alt=""></div>').join(''));
+const its=[...flow.querySelectorAll('.it')];
+document.getElementById('dots').innerHTML=ORDER.map((k,i)=>'<button type="button" style="--c:'+P[k].c1+'" data-i="'+i+'" aria-label="'+P[k].name+'"></button>').join('');
+function show(i,burst){cur=(i+ORDER.length)%ORDER.length;const k=ORDER[cur],p=P[k],mob=innerWidth<700;
+ fh.style.setProperty('--c1',p.c1);fh.style.backgroundColor=p.c1;
+ its.forEach((el,j)=>{let o=j-cur;if(o>ORDER.length/2)o-=ORDER.length;if(o<-ORDER.length/2)o+=ORDER.length;const a=Math.abs(o);
+  el.style.transform='translateX(calc(-50% + '+(o*(mob?52:40))+'%)) translateZ('+(-a*190)+'px) rotateY('+(-o*24)+'deg) scale('+(a?.82:1)+')';
+  el.style.opacity=a>2?0:a===2?.45:1;el.style.zIndex=10-a;el.style.filter=a?'drop-shadow(0 20px 16px rgba(12,29,74,.35)) saturate(.85)':'';el.style.pointerEvents=a>2?'none':'auto'});
+ document.getElementById('har').textContent=p.slogan;document.getElementById('hname').textContent=p.name;
+ document.getElementById('hlead').textContent=p.desc;const g=document.getElementById('hgo');g.href='produit.html?p='+k;g.textContent='Voir la fiche '+p.name;
+ document.querySelectorAll('#dots button').forEach((b,j)=>b.classList.toggle('on',j===cur));
+ if(burst){const r=flow.getBoundingClientRect(),h=fh.getBoundingClientRect();cv.burst(r.left-h.left+r.width/2,r.top-h.top+r.height*.4,26)}}
+flow.querySelector('.p').onclick=()=>show(cur-1,1);flow.querySelector('.n').onclick=()=>show(cur+1,1);
+document.getElementById('dots').onclick=e=>{const b=e.target.closest('button');if(b)show(+b.dataset.i,1)};
+its.forEach(el=>{const go=()=>{const i=+el.dataset.i;if(i===cur)location.href='produit.html?p='+ORDER[i];else show(i,1)};el.addEventListener('click',go);el.addEventListener('keydown',e=>{if(e.key==='Enter')go()})});
+let sx=null;flow.addEventListener('pointerdown',e=>{sx=e.clientX});flow.addEventListener('pointerup',e=>{if(sx!==null&&Math.abs(e.clientX-sx)>40){show(cur+(e.clientX<sx?1:-1),1)}sx=null});
+let auto=setInterval(()=>{if(!document.hidden)show(cur+1)},5500);flow.addEventListener('pointerenter',()=>clearInterval(auto),{once:true});
+show(0);
+// moods
+let md=null;const mo=document.getElementById('moods'),mr=document.getElementById('mres');
+mo.innerHTML=MOODS.map(m=>'<button type="button" class="mood" data-m="'+m[0]+'"><span class="e">'+m[1]+'</span>'+m[2]+'</button>').join('');
+mo.onclick=e=>{const b=e.target.closest('.mood');if(!b)return;md=b.dataset.m;mo.querySelectorAll('.mood').forEach(x=>x.classList.toggle('on',x===b));
+ const ks=ORDER.filter(k=>P[k].mood.includes(md)).slice(0,2),p=P[ks[0]];
+ mr.innerHTML='<div class="mbox" style="--c1:'+p.c1+'"><div class="im">'+ks.map(k=>pimg(k)).join('')+'</div><div><h3>'+ks.map(k=>P[k].name).join(' + ')+'</h3><p>'+p.ing+'</p><div class="acts" style="display:flex;gap:10px;flex-wrap:wrap">'+ks.map(k=>'<a class="btn o" href="produit.html?p='+k+'">Fiche '+P[k].name+'</a>').join('')+'</div></div></div>';
+ mr.scrollIntoView({behavior:'smooth',block:'nearest'})};
+// stickers
+const fl=document.getElementById('filters');fl.innerHTML=LINES.map(l=>'<button type="button" data-l="'+l[0]+'" class="'+(l[0]==='all'?'on':'')+'">'+l[1]+'</button>').join('');
+const inLine=(k,l)=>l==='all'||P[k].line===l||(l==='sac'&&P[k].fmt.includes('1 kg'));
+document.getElementById('stk').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '<a class="st" data-k="'+k+'" href="produit.html?p='+k+'" style="--c1:'+p.c1+'">'+(i===0?'<span class="tap tl"><i></i>Clique !</span>':'')+'<span class="ar">'+p.ar+'</span><div class="im">'+pimg(k)+'</div><div class="lb"><h3>'+p.name+'</h3><p>'+p.fmt.join(' · ')+'</p></div></a>'}).join('');
+fl.onclick=e=>{const b=e.target.closest('button');if(!b)return;fl.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.st').forEach(c=>c.classList.toggle('hide',!inLine(c.dataset.k,b.dataset.l)))};
+const G=[['dark','camp-dark','الذوق الأقوى'],['classique','camp-classique','البساطة تربح'],['extra','camp-extra','أكثر من فطور'],['crunchy','camp-combo','The perfect combo'],['premium','camp-premium','تغذية تناسب هدفك'],['peanut','camp-peanut','Peanut butter'],['super','camp-super','Super 1 kg'],['crunchy','camp-crunchy','Crunchy 1 kg'],['extra','camp-extra-box','Extra 400 g']];
+document.getElementById('pola').innerHTML=G.map(g=>'<a href="produit.html?p='+g[0]+'"><img src="img/'+g[1]+'.jpg" alt="Campagne Magico" loading="lazy"><span>'+g[2]+'</span></a>').join('');
+document.getElementById('prz').innerHTML=PRIZES.filter(p=>!p.lose).map(p=>'<span>'+p.e+' '+p.t+'</span>').join('');
+const seg=PRIZES.length;document.getElementById('mw').style.background='conic-gradient('+PRIZES.map((p,i)=>p.c+' '+(i*360/seg)+'deg '+((i+1)*360/seg)+'deg').join(',')+')';
+document.getElementById('cinfo').innerHTML='<a href="'+CONTACT.consoTel+'">'+IC.phone+'<span>'+CONTACT.conso+'<small>Service consommateur</small></span></a><a href="'+CONTACT.comTel+'">'+IC.phone+'<span>'+CONTACT.com+'<small>Service commercial</small></span></a><a href="'+CONTACT.map+'" target="_blank" rel="noopener">'+IC.pin+'<span>'+CONTACT.addr+'<small>Adresse</small></span></a><a href="'+CONTACT.ig+'" target="_blank" rel="noopener">'+IC.ig+'<span>@magico.dz<small>Instagram</small></span></a>';document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Message envoyé, merci !')};
+reveal();
+</script>
+</body></html>
