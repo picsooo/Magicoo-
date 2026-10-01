@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="style.css"><link rel="icon" href="img/logo-magico.png">
 <title>Fiche produit — Magico</title>
 <meta name="description" content="Fiche produit Magico : ingrédients, formats, mentions et conseils d'utilisation.">
-</head><body data-v="auto">
+<meta name="robots" content="noindex, nofollow"><!--wm-demo--></head><body data-v="auto">
 <div id="hdr"></div>
 <main id="main">
 <section class="p-hero" id="ph"><canvas id="cv"></canvas><div class="wrap in">
@@ -55,4 +55,5 @@ document.getElementById('rel').innerHTML=ORDER.filter(x=>x!==k).slice(0,4).map(x
 document.addEventListener('pointermove',e=>{if(innerWidth<900)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;pi.style.transform='rotateY('+(x*10)+'deg) rotateX('+(-y*6)+'deg) translateY('+(y*-10)+'px)'});
 reveal();
 </script>
-</body></html>
+<div id="wm-demo" role="note" style="position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:rgba(10,14,30,.92);color:#fff;font:600 12px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;padding:7px 12px calc(7px + env(safe-area-inset-bottom,0px));letter-spacing:.01em">Maquette de démonstration réalisée par <a href="https://webminds.dz" style="color:#ffcf5a;text-decoration:underline" target="_blank" rel="noopener">Webminds</a> · Proposition non officielle, aucun formulaire n'est enregistré</div>
+<script>(function(){function f(){var b=document.getElementById('wm-demo');if(!b)return;var h=b.offsetHeight;document.body.style.paddingBottom=(parseFloat(getComputedStyle(document.body).paddingBottom)||0)+h+'px';document.querySelectorAll('body *').forEach(function(e){if(e===b||b.contains(e))return;var s=getComputedStyle(e);if(s.position!=='fixed')return;var bt=parseFloat(s.bottom);if(!isNaN(bt)&&bt<120&&s.bottom!=='auto'&&e.offsetHeight<window.innerHeight*.6){e.style.bottom=(bt+h)+'px'}})}if(document.readyState==='complete')f();else addEventListener('load',f)})();</script><!--wm-demo--></body></html>
