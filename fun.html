@@ -15,7 +15,7 @@
    <div class="ar" id="har"></div>
    <h1 id="hname"></h1>
    <p class="lead" id="hlead"></p>
-   <div class="acts"><a class="btn" id="hgo" href="#">Voir la fiche</a><a class="btn o" href="jeux.html">🎁 Jouer et gagner</a></div>
+   <div class="acts"><a class="btn" id="hgo" href="#">Voir la fiche</a><a class="btn o" href="#gamme">Voir toute la bande</a></div>
    <div class="dots" id="dots" role="group" aria-label="Choisir une recette"></div>
    <span class="hint">👆 Touchez l'écran pour faire voler les ingrédients</span>
   </div>
@@ -41,11 +41,7 @@
  <div class="pola" id="pola"></div>
 </section>
 
-<section style="padding-top:0"><div class="gameteaser"><canvas id="cv2" style="position:absolute;inset:0;width:100%;height:100%;z-index:1"></canvas><div class="wrap in" style="padding-block:clamp(40px,6vw,70px)">
- <div><h2>Tourne la roue,<br>gagne ton cartable.</h2><p>Un quiz de 6 questions sur Magico, puis un tour de roue. À gagner :</p>
-  <div class="prz" id="prz"></div><div style="margin-top:24px"><a class="btn o" href="jeux.html">🎡 Je tente ma chance</a></div></div>
- <div class="miniwheel" id="mw" aria-hidden="true"></div>
-</div></div></section>
+
 
 <section style="padding-bottom:0"><div class="wrap duo">
  <a class="blk a rv" href="distributeurs.html" style="border:3px solid var(--navy);box-shadow:6px 6px 0 #ff3d7f"><img class="pk" src="img/dark-sac.webp" alt=""><span class="tap tl"><i></i>Espace pro</span><h3>Tu tiens une supérette ou une salle ?</h3><p>Deviens distributeur Magico : simulateur de commande et conditions pro.</p><span class="go">Espace distributeurs →</span></a>
@@ -65,7 +61,7 @@
 <div id="ftr"></div>
 <script src="data.js"></script><script src="core.js"></script>
 <script>
-const cv=Grains(document.getElementById('cv'));Grains(document.getElementById('cv2'),{n:24});
+const cv=Grains(document.getElementById('cv'));
 const fh=document.getElementById('fh'),flow=document.getElementById('flow');
 let cur=0;
 document.getElementById('giant').innerHTML=(ORDER.map(k=>P[k].name).join(' · ')+' · ').repeat(2);
@@ -102,8 +98,6 @@ document.getElementById('stk').innerHTML=ORDER.map((k,i)=>{const p=P[k];return '
 fl.onclick=e=>{const b=e.target.closest('button');if(!b)return;fl.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.st').forEach(c=>c.classList.toggle('hide',!inLine(c.dataset.k,b.dataset.l)))};
 const G=[['dark','camp-dark','الذوق الأقوى'],['classique','camp-classique','البساطة تربح'],['extra','camp-extra','أكثر من فطور'],['crunchy','camp-combo','The perfect combo'],['premium','camp-premium','تغذية تناسب هدفك'],['peanut','camp-peanut','Peanut butter'],['super','camp-super','Super 1 kg'],['crunchy','camp-crunchy','Crunchy 1 kg'],['extra','camp-extra-box','Extra 400 g']];
 document.getElementById('pola').innerHTML=G.map(g=>'<a href="produit.html?p='+g[0]+'"><img src="img/'+g[1]+'.jpg" alt="Campagne Magico" loading="lazy"><span>'+g[2]+'</span></a>').join('');
-document.getElementById('prz').innerHTML=PRIZES.filter(p=>!p.lose).map(p=>'<span>'+p.e+' '+p.t+'</span>').join('');
-const seg=PRIZES.length;document.getElementById('mw').style.background='conic-gradient('+PRIZES.map((p,i)=>p.c+' '+(i*360/seg)+'deg '+((i+1)*360/seg)+'deg').join(',')+')';
 document.getElementById('cinfo').innerHTML='<a href="'+CONTACT.consoTel+'">'+IC.phone+'<span>'+CONTACT.conso+'<small>Service consommateur</small></span></a><a href="'+CONTACT.comTel+'">'+IC.phone+'<span>'+CONTACT.com+'<small>Service commercial</small></span></a><a href="'+CONTACT.map+'" target="_blank" rel="noopener">'+IC.pin+'<span>'+CONTACT.addr+'<small>Adresse</small></span></a><a href="'+CONTACT.ig+'" target="_blank" rel="noopener">'+IC.ig+'<span>@magico.dz<small>Instagram</small></span></a>';document.getElementById('cform').onsubmit=e=>{e.preventDefault();okForm(e.target,'Message envoyé, merci !')};
 reveal();
 </script>
